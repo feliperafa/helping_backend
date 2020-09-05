@@ -1,4 +1,4 @@
-const mongoose = require('mongose')
+const mongoose = require('mongoose')
 const Doacao = mongoose.model('Doacoes')
 
 exports.newDoacao = (req, res) => {
