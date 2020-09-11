@@ -15,7 +15,7 @@ exports.createOne = (req, res) => {
     let novoVoluntario = new Voluntario({ nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, ongs })
     novoVoluntario.save((error, voluntario) => {
         if (error) {
-            res.send(error)
+            res.send("Erro: " + error)
         }
         res.status(201).json(voluntario)
     })

@@ -11,7 +11,7 @@ const VoluntarioSchema = new Schema({
         required: true,
     },
     cpf_voluntario: {
-        type: Number,
+        type: String,
         required: true,
     },
     email: {
