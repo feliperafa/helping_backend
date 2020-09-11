@@ -26,12 +26,12 @@ module.exports = function (app) {
 
     //================================VOLUNTARIOS================================
     app.route('/voluntarios')
-        // .get(voluntarios.listAll)
-        // .post(voluntarios.creatOne)
+        .get(voluntarios.listAll)
+        .post(voluntarios.creatOne)
 
     app.route('/voluntarios/:id')
-        // .get(voluntarios.showOne)
-        // .put(voluntarios.updateUser)
-        // .delete(voluntarios.removerUser)
+        .get(voluntarios.showOne)
+        .put(voluntarios.update)
+        .delete(voluntarios.delete)
 
 }
