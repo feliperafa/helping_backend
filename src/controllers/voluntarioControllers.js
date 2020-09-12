@@ -9,10 +9,10 @@ exports.listAll = (req, res) => {
         res.send(voluntarios)
     })
 }
-
 exports.creatOne = (req, res) => {
     const { nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong} = req.body
     let novoVoluntario = new Voluntario({ nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong })
+
     novoVoluntario.save((error, voluntario) => {
         if (error) {
             res.send("Erro: " + error)
@@ -52,23 +52,3 @@ exports.delete = (req, res) => {
     })
 }
 
-exports.deleteAll = (req, res) => {
-    Voluntario.remove({}, (err, voluntarios) => {
-        if (err) {
-            res.send(err)
-        }
-        res.send(voluntarios)
-    })
-}
-
-
-/* 
-nome_voluntario 
-telefone_voluntario 
-cpf_voluntario 
-email 
-endereco 
-numero
-ongs 
-
-*/

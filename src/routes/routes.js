@@ -26,9 +26,9 @@ module.exports = function (app) {
 
     //================================VOLUNTARIOS================================
     app.route('/voluntarios')
-        .post(voluntarios.creatOne)
+
+        .post(voluntarios.createOne)
         .get(voluntarios.listAll)
-        .delete(voluntarios.deleteAll)
 
     app.route('/voluntarios/:id')
         .get(voluntarios.showOne)
