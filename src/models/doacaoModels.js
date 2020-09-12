@@ -26,12 +26,6 @@ const DoacaoSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    ongs: [{
-        id_ong: {
-            type: mongoose.Schema.Types.ObjectId
-        }
-    }],
-    
     
 })
 

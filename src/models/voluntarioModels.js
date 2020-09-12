@@ -7,7 +7,7 @@ const VoluntarioSchema = new Schema({
         required: true,
     },
     telefone_voluntario: {
-        type: String,
+        type: Number,
         required: true,
     },
     cpf_voluntario: {
@@ -32,10 +32,11 @@ const VoluntarioSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    id_ong: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'Ongs'
+    ongs: [{
+        id_ong: {
+            type: mongoose.Schema.Types.ObjectId
         }
+    }]
     
 })
 
