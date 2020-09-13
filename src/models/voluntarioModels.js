@@ -34,7 +34,8 @@ const VoluntarioSchema = new Schema({
     },
     ongs: [{
         id_ong: {
-            type: mongoose.Schema.Types.ObjectId
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Ogns'
         }
     }]
     
