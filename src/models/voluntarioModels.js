@@ -7,7 +7,7 @@ const VoluntarioSchema = new Schema({
         required: true,
     },
     telefone_voluntario: {
-        type: Number,
+        type: String,
         required: true,
     },
     cpf_voluntario: {
@@ -38,7 +38,6 @@ const VoluntarioSchema = new Schema({
             ref: 'Ogns'
         }
     }]
-    
 })
 
 module.exports = mongoose.model('Voluntarios', VoluntarioSchema)
