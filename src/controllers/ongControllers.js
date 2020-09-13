@@ -49,13 +49,12 @@ exports.deleteOng = (req, res) => {
         res.status(200).json('Ong deletado com sucesse!')
     })
 }
-/*
-nome_ong
-telefone_ong
-cnpj_ong
-email
-descricao
-senha
-endereco
-numero
-*/
+
+exports.deleteAll = (req, res) => {
+    Ong.remove({}, (err, ongs) => {
+        if (err) {
+            res.send(err)
+        }
+        res.send(ongs)
+    })
+}

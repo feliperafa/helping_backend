@@ -2,10 +2,9 @@ const express = require('express')
 const bodyParser = require('body-Parser')
 const mongoose = require('mongoose')
 const cors = require('cors')
-const Doacoes = require('./src/models/doacaoModels')
+const Usuario = require('./src/models/doacaoModels')
 const Voluntarios = require('./src/models/voluntarioModels')
-const Ongs = require('./src/models/ongModels')
-
+const ong = require('./src/models/ongModels')
 
 const app = express()
 app.use(cors())
