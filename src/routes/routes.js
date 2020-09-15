@@ -16,7 +16,7 @@ module.exports = function (app) {
     // .get(doacoes.listAll)
 
     app.route('/doacoes/:id')
-    // .post(doacoes.newDoacao)
+        .post(doacoes.newDoacao)
     // .get(doacoes.showOne)
     // .put(doacoes.updateUser)
     // .delete(doacoes.removerUser)
@@ -25,6 +25,7 @@ module.exports = function (app) {
     app.route('/ongs')
         .get(ongs.listAll)
         .post(ongs.createOne)
+        .delete(ongs.deleteAll)
 
     app.route('/ongs/:id')
         .get(ongs.showOne)
@@ -40,6 +41,5 @@ module.exports = function (app) {
         .get(voluntarios.showOne)
         .put(voluntarios.update)
         .delete(voluntarios.delete)
-
 
 }

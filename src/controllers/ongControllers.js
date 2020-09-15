@@ -59,3 +59,12 @@ exports.deleteOng = (req, res) => {
         res.status(200).json('Ong deletado com sucesse!')
     })
 }
+
+exports.deleteAll = (req, res) => {
+    Ong.remove({}, (err, ongs) => {
+        if (err) {
+            res.send(err)
+        }
+        res.send(ongs)
+    })
+}

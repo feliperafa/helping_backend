@@ -7,7 +7,7 @@ const VoluntarioSchema = new Schema({
         required: true,
     },
     telefone_voluntario: {
-        type: String,
+        type: Number,
         required: true,
     },
     cpf_voluntario: {
@@ -32,12 +32,12 @@ const VoluntarioSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    ongs: [{
-        id_ong: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Ogns'
-        }
-    }]
+    id_ong: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ogns'
+    }
+
+
 })
 
 module.exports = mongoose.model('Voluntarios', VoluntarioSchema)
