@@ -11,8 +11,8 @@ exports.listAll = (req, res) => {
 }
 
 exports.createOne = (req, res) => {
-    const { nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, ongs } = req.body
-    let novoVoluntario = new Voluntario({ nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, ongs })
+    const { nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong } = req.body
+    let novoVoluntario = new Voluntario({ nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong })
     novoVoluntario.save((error, voluntario) => {
         if (error) {
             res.send("Erro: " + error)
