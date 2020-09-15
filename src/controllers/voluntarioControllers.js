@@ -9,7 +9,7 @@ exports.listAll = (req, res) => {
         res.send(voluntarios)
     })
 }
-exports.creatOne = (req, res) => {
+exports.createOne = (req, res) => {
     const { nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong} = req.body
     let novoVoluntario = new Voluntario({ nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong })
 

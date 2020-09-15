@@ -2,6 +2,13 @@ module.exports = function (app) {
     const doacoes = require('../controllers/doacaoControllers')
     const ongs = require('../controllers/ongControllers')
     const voluntarios = require('../controllers/voluntarioControllers')
+    const auth = require('../controllers/authController')
+
+    app.route('/signin')
+        .post(auth.signIn)
+    
+    app.route('/validateToken')
+        .post(auth.validateToken)
 
     //================================DOAÇÕES================================
 
@@ -26,7 +33,6 @@ module.exports = function (app) {
 
     //================================VOLUNTARIOS================================
     app.route('/voluntarios')
-
         .post(voluntarios.createOne)
         .get(voluntarios.listAll)
 

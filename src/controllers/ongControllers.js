@@ -1,5 +1,6 @@
-const mongoose = require('mongoose')
-const Ong = mongoose.model('Ongs')
+const mongoose = require('mongoose');
+const Ong = mongoose.model('Ongs');
+const bcrypt = require('bcrypt-nodejs');
 
 exports.listAll = (req, res) => {
     Ong.find({}, (err, ongs) => {
@@ -10,9 +11,19 @@ exports.listAll = (req, res) => {
     })
 }
 
+
 exports.createOne = (req, res) => {
-    const { nome_ong, telefone_ong, cnpj_ong, email, descricao, senha, endereco, numero } = req.body
-    let novaong = new Ong({ nome_ong, telefone_ong, cnpj_ong, email, descricao, senha, endereco, numero })
+
+    const ecryptPassword = password => {
+        const salt = bcrypt.genSaltSync(10)
+        return bcrypt.hashSync(password, salt)
+    }
+
+    let { nome_ong, telefone_ong, cnpj_ong, email, descricao, senha, endereco,numero } = req.body;
+
+    senha = ecryptPassword(senha)
+
+    let novaong = new Ong({nome_ong, telefone_ong, cnpj_ong, email, descricao, senha, endereco,numero })
     novaong.save((error, ong) => {
         if (error) {
             res.send("Erro: " + error)
