@@ -12,7 +12,6 @@ exports.signIn = async (req, res) => {
 
     const user = await Ong.findOne({ email: req.body.email })
     
-    
     if (!user) return res.status(400).send('usuário não encontrado!')
     
     const isMatch = bcrypt.compareSync(req.body.senha, user.senha)

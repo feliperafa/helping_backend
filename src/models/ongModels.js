@@ -41,13 +41,7 @@ const OngSchema = new Schema({
     createdAT: {
         type: Date,
         default: Date.now
-    },
-    Voluntarios: [{
-        id_voluntario: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'Voluntarios'
-        }
-    }]
+    }
 })
 
 module.exports = mongoose.model('Ongs', OngSchema)
