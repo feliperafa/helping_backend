@@ -1,30 +1,39 @@
 const mongoose = require('mongoose')
 const Doacao = mongoose.model('Doacoes')
+const Ong = mongoose.model('Ongs')
 
-exports.newDoacao = (req, res) => {
+exports.newDoacao = async (req, res) => {
 
-    const { _id } = req.params
-    const { nome_doador, email_doador, cpf, valor_doacao } = req.body
-    const novaDoacao = new Doacao({ nome_doador, email_doador, valor_doacao, cpf })
-    if (!_id) {
-        throw new Error('Id da Ong - Invalido/Vazio')
-        const ong_localizada = Ong.findOne({
-            _id: req.params.id
-        })
-    } if (!ong_localizada) {
-        throw new Error('Ong Não Cadastrada / Id Invalido')
+    const { id } = req.params
+    const { nome_doador, email_doador, cpf, valor_doacao } = req.body;
+    const valor_porcentagem = valor_doacao * 0.1;
+    const valor_real = valor_doacao - valor_porcentagem
+    let doa = new Doacao(
+        { nome_doador, email_doador, cpf, valor_doacao: valor_real, valor_doacao_sistema: valor_porcentagem, id_ong: id })
+
+    if (!valor_doacao || !cpf || !nome_doador || !email_doador || !id) {
+        res.status(400).json('Erro favor preencha os dados em branco')
     }
-    if (valor_doacao || !cpf || nome_doador || !email_doador) {
-        throw new Error('Valores Invalidos')
-    }
-    const valor_porcentagem = valor_doacao * 0.1
-    novaDoacao.save({
-        nome_doador,
-        email_doador,
-        cpf,
-        valor_doacao: valor_doacao - valor_porcentagem,
-        valor_doacao_sistema: valor_porcentagem
+
+    await doa.save({});
+    res.status(200).json('Doação Realizda com Sucesso!.')
+}
+
+
+exports.deleteAll = (req, res) => {
+    Doacao.remove({}, (err, doacoes) => {
+        if (err) {
+            res.send(err)
+        }
+        res.send(doacoes)
     })
+}
 
-    res.status(200).json({ ok: 'Doação Realizada com Sucesso' })
+exports.listar = async (req, res) => {
+    Doacao.findById({ _id: req.params.id }, (err, doacoes) => {
+        if (err) {
+            res.send(err)
+        }
+        res.status(200).json(doacoes)
+    })
 }

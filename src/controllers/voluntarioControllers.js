@@ -51,14 +51,3 @@ exports.delete = (req, res) => {
         res.status(200).json('Voluntario deletado com sucesse!')
     })
 }
-
-/* 
-nome_voluntario 
-telefone_voluntario 
-cpf_voluntario 
-email 
-endereco 
-numero
-ongs 
-
-*/

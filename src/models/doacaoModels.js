@@ -16,17 +16,22 @@ const DoacaoSchema = new Schema({
         required: true,
     },
     valor_doacao: {
-        type: Number,
+        type: mongoose.Types.Decimal128,
         required: true,
     },
     valor_doacao_sistema: {
-        type: Number,
+        type: mongoose.Types.Decimal128,
     },
     createdAT: {
         type: Date,
         default: Date.now
     },
-    
+    id_ong: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Ogns'
+    }
+
+
 })
 
 module.exports = mongoose.model('Doacoes', DoacaoSchema)

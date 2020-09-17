@@ -6,17 +6,19 @@ module.exports = function (app) {
 
     app.route('/signin')
         .post(auth.signIn)
-    
+
     app.route('/validateToken')
         .post(auth.validateToken)
 
     //================================DOAÇÕES================================
 
     app.route('/doacoes')
-    // .get(doacoes.listAll)
-
-    app.route('/doacoes/:id')
-        .post(doacoes.newDoacao)
+      .delete(doacoes.deleteAll)
+      
+      app.route('/doacoes/:id')
+      .post(doacoes.newDoacao)
+      .get(doacoes.listar)
+      //  .get(doacoes.listbyId)
     // .get(doacoes.showOne)
     // .put(doacoes.updateUser)
     // .delete(doacoes.removerUser)
