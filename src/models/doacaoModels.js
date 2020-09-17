@@ -12,23 +12,23 @@ const DoacaoSchema = new Schema({
         lowercase: true,
     },
     cpf: {
-        type: Number,
+        type: String,
         required: true,
     },
     valor_doacao: {
-        type: mongoose.Types.Decimal128,
+        type: String,
         required: true,
     },
     valor_doacao_sistema: {
-        type: mongoose.Types.Decimal128,
+        type: String,
     },
     createdAT: {
         type: Date,
         default: Date.now
     },
     id_ong: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Ogns'
+        type: String,
+         required: true,
     }
 
 
