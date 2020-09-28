@@ -42,7 +42,7 @@ try {
 }
 
 exports.validateToken = async (req, res) => {
-    const userData = req.boy || null
+    const userData = req.body || null
     try {
         if (userData) {
             const token = jwt.decode(userData.token, authSecret)
