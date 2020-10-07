@@ -2,17 +2,21 @@ const mongoose = require('mongoose')
 const Voluntario = mongoose.model('Voluntarios')
 
 exports.listAll = (req, res) => {
-    Voluntario.find({}, (err, voluntarios) => {
+    console.log(req.params.id)
+
+    Voluntario.find({ id_ong: req.params.id }, (err, voluntarios) => {
         if (err) {
             res.send(err)
         }
-        res.send(voluntarios)
+        res.status(200).json(voluntarios)
     })
+
 }
 
 exports.createOne = (req, res) => {
-    const { nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong } = req.body
-    let novoVoluntario = new Voluntario({ nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong })
+    console.log(req.body)
+    const { nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero } = req.body
+    let novoVoluntario = new Voluntario({ nome_voluntario, telefone_voluntario, cpf_voluntario, email, endereco, numero, id_ong: req.params.id })
     novoVoluntario.save((error, voluntario) => {
         if (error) {
             res.send("Erro: " + error)
