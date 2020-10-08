@@ -35,7 +35,7 @@ const OngSchema = new Schema({
         lowercase: true,
     },
     numero: {
-        type: Number,
+        type: String,
         required: true
     },
     createdAT: {
