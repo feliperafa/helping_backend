@@ -6,7 +6,7 @@ exports.listAll = (req, res) => {
         if (err) {
             res.send(err)
         }
-        res.send(voluntarios)
+        res.status(200).json(voluntarios)
     })
 }
 
@@ -31,10 +31,8 @@ exports.showOne = (req, res) => {
 }
 
 exports.update = (req, res) => {
-    Voluntario.findOneAndUpdate(
-        { _id: req.params.id },
-        req.body,
-        { new: true },
+    Voluntario.findOneAndUpdate({ _id: req.params.id },
+        req.body, { new: true },
         (err, voluntario) => {
             if (err) {
                 res.send(err)

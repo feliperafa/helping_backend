@@ -5,21 +5,21 @@ const bcrypt = require('bcrypt-nodejs')
 const mongoose = require('mongoose')
 const Ong = mongoose.model('Ongs')
 
-exports.signIn = async (req, res) => {
+exports.signIn = async(req, res) => {
     if (!req.body.email || !req.body.senha) {
         return res.status(400).send('Informe usuário e senha!')
     }
 
     const user = await Ong.findOne({ email: req.body.email })
-    
+
     if (!user) return res.status(400).send('usuário não encontrado!')
-    
+
     const isMatch = bcrypt.compareSync(req.body.senha, user.senha)
-    
+
     if (!isMatch) return res.status(401).send('Email/Senha invalidos!')
-    
+
     const now = Math.floor(Date.now() / 1000)
-    
+
 
     const payload = {
         id: user._id,
@@ -28,20 +28,20 @@ exports.signIn = async (req, res) => {
         iat: now,
         exp: now + (60 * 60 * 24)
     }
-    
-try {
-    res.json({
-        ...payload,
-        token: jwt.encode(payload, authSecret)
-    })
 
-}catch (er) {
-    console.log(er)
+    try {
+        res.json({
+            ...payload,
+            token: jwt.encode(payload, authSecret)
+        })
+
+    } catch (er) {
+        console.log(er)
+    }
+
 }
 
-}
-
-exports.validateToken = async (req, res) => {
+exports.validateToken = async(req, res) => {
     const userData = req.body || null
     try {
         if (userData) {
@@ -55,4 +55,3 @@ exports.validateToken = async (req, res) => {
     }
     res.send(false)
 }
-
