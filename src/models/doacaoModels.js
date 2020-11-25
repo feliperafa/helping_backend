@@ -12,7 +12,7 @@ const DoacaoSchema = new Schema({
         lowercase: true,
     },
     cpf: {
-        type: Number,
+        type: String,
         required: true,
     },
     valor_doacao: {
@@ -20,15 +20,19 @@ const DoacaoSchema = new Schema({
         required: true,
     },
     valor_doacao_sistema: {
+feature/voluntarioController
         type: String
+
+        type: String,
+
     },
     createdAT: {
         type: Date,
         default: Date.now
     },
     id_ong: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Ogns'
+        type: String,
+         required: true,
     }
 
 
