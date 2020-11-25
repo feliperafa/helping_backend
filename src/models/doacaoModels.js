@@ -16,11 +16,11 @@ const DoacaoSchema = new Schema({
         required: true,
     },
     valor_doacao: {
-        type: mongoose.Types.Decimal128,
+        type: String,
         required: true,
     },
     valor_doacao_sistema: {
-        type: mongoose.Types.Decimal128,
+        type: String
     },
     createdAT: {
         type: Date,
