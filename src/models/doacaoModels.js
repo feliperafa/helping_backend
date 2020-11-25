@@ -20,7 +20,11 @@ const DoacaoSchema = new Schema({
         required: true,
     },
     valor_doacao_sistema: {
+feature/voluntarioController
+        type: String
+
         type: String,
+
     },
     createdAT: {
         type: Date,
