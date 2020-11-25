@@ -13,12 +13,12 @@ module.exports = function (app) {
     //================================DOAÇÕES================================
 
     app.route('/doacoes')
-      .delete(doacoes.deleteAll)
-      
-      app.route('/doacoes/:id')
-      .post(doacoes.newDoacao)
-      .get(doacoes.listar)
-      //  .get(doacoes.listbyId)
+        .delete(doacoes.deleteAll)
+
+    app.route('/doacoes/:id')
+        .post(doacoes.newDoacao)
+        .get(doacoes.listar)
+    //  .get(doacoes.listbyId)
     // .get(doacoes.showOne)
     // .put(doacoes.updateUser)
     // .delete(doacoes.removerUser)
@@ -35,13 +35,14 @@ module.exports = function (app) {
         .delete(ongs.deleteOng)
 
     //================================VOLUNTARIOS================================
-    app.route('/voluntarios')
-        .post(voluntarios.createOne)
-        .get(voluntarios.listAll)
+    // app.route('/voluntarios')
+    // .delete(voluntarios.deleteAll)
 
     app.route('/voluntarios/:id')
-        .get(voluntarios.showOne)
+        .post(voluntarios.createOne)
+        .get(voluntarios.listAll)
+        // .get(voluntarios.showOne)
         .put(voluntarios.update)
-        .delete(voluntarios.delete)
+    //     .delete(voluntarios.delete)
 
 }
