@@ -36,12 +36,10 @@ module.exports = function (app) {
 
     //================================VOLUNTARIOS================================
     app.route('/voluntarios')
-     
-       
+        .post(voluntarios.createOne)
+        .get(voluntarios.listAll)
 
     app.route('/voluntarios/:id')
-        .get(voluntarios.listAll)
-        .post(voluntarios.createOne)
         .get(voluntarios.showOne)
         .put(voluntarios.update)
         .delete(voluntarios.delete)
